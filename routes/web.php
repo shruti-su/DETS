@@ -12,5 +12,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 Route::resource('items', App\Http\Controllers\ItemController::class)->middleware(['auth']);
+Route::resource('itemsgroup', App\Http\Controllers\ItemGroupController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
