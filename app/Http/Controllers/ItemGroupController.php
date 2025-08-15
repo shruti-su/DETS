@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+use App\Models\ItemGroup;
 use Illuminate\Http\Request;
 
 class ItemGroupController extends Controller
@@ -60,5 +62,11 @@ class ItemGroupController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getItemGroups(ItemGroup $id)// fetch data from the database beacuse of model name ItemGroup
+    {
+        // This method can be used to fetch item groups if needed
+        return view('itemsgroup.add_item', ['group' => $id]);
     }
 }

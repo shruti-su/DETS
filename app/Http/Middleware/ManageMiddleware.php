@@ -21,10 +21,9 @@ class ManageMiddleware
         }
 
         $user = Auth::user();
-        $allowedRoles = explode('|', $roles);
+        $allowedRoles = explode('|', $roles); // e.g., "admin|user"
 
-        // Ensure roles relationship is loaded
-        if ($user->roles->pluck('role')->intersect($allowedRoles)->isNotEmpty()) {
+        if (in_array($user->role, $allowedRoles)) {
             return $next($request);
         }
 

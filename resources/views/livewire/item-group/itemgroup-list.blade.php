@@ -19,7 +19,7 @@
              </thead>
              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                  {{-- The dynamic data loop, adjusted for your variable names --}}
-                 @forelse($item-group as $itemgroup)
+                 @forelse($itemGroups as $itemgroup)
                      <tr
                          class="transition-colors duration-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
                          <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -40,24 +40,30 @@
                              <div class="relative inline-block text-left">
                                  <button onclick="toggleDropdown('dropdown-{{ $itemgroup->id }}')"
                                      class="inline-flex justify-center w-full px-2 py-1 text-sm font-medium text-gray-700 bg-white rounded-md shadow-sm dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                     <i class="fas fa-ellipsis-v"></i>
+                                     <svg class="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                         <path
+                                             d="M9.5 13a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0z"
+                                             fill="currentColor" />
+                                     </svg>
                                  </button>
                                  <div id="dropdown-{{ $itemgroup->id }}"
                                      class="absolute right-0 z-10 hidden w-40 mt-1 origin-top-right bg-white rounded-md shadow-lg top-full dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none"
                                      role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
                                      tabindex="-1">
                                      <div class="py-1" role="none">
-                                         <button
-                                             class="block w-full px-4 py-2 text-sm text-left text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700"
-                                             role="menuitem" tabindex="-1">
-                                             <i class="mr-2 fas fa-plus-circle"></i>Add Item
-                                         </button>
+                                         <a href="{{ route('itemgroups.add-item', $itemgroup->id) }}">
+                                             <button
+                                                 class="block w-full px-4 py-2 text-sm text-left text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                                 role="menuitem" tabindex="-1">
+                                                 <i class="mr-2 fas fa-plus-circle"></i>Add Item
+                                             </button>
+                                         </a>
                                          <button
                                              class="block w-full px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                                              role="menuitem" tabindex="-1">
                                              <i class="mr-2 fas fa-edit"></i>Edit
                                          </button>
-                                         <button
+                                         <button wire:click="deleteItemgroup('{{ $itemgroup->id }}')"
                                              class="block w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
                                              role="menuitem" tabindex="-1">
                                              <i class="mr-2 fas fa-trash-alt"></i>Delete

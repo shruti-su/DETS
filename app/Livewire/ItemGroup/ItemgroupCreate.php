@@ -13,7 +13,7 @@ class ItemgroupCreate extends Component
 
     public function save()
     {
-        dd('ok');
+
         // Validation logic can be added here
         $this->validate([
             'name' => 'required|string|max:255',
@@ -28,13 +28,13 @@ class ItemgroupCreate extends Component
         }
         // Create the item group
         ItemGroup::create([
-            'name' => $this->name,
-            'description' => $this->description,
+            'Name' => $this->name,
+            'Description' => $this->description,
         ]);
 
         session()->flash('message', 'Item Group created successfully!');
 
-        return redirect()->route('item-groups.index');
+        return redirect()->route('itemgroups.index');
     }
 
     public function render()

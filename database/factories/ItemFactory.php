@@ -17,7 +17,11 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'Name' => $this->faker->word(),
+            'Description' => $this->faker->sentence(),
+            'item_group_id' => null, // Assuming item_group_id can be null
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

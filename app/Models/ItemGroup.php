@@ -13,7 +13,7 @@ class ItemGroup extends Model
 
     public function items()
     {
-        return $this->hasMany(item::class, 'item_group_id');
+        return $this->hasMany(Item::class, 'item_group_id');
     }
 
     protected $fillable = [

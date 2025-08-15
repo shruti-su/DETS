@@ -19,7 +19,19 @@ class ItemList extends Component
             'items' => Item::where('items.Name', 'like', '%'.$this->search.'%')
                 ->leftJoin('item_groups', 'item_groups.id', '=', 'items.item_group_id')
                 ->select('items.*', 'item_groups.name as item_group_name')
+                ->limit(10)
                 ->get(),
         ]);
+    }
+
+    public function deleteItem($id)
+    {
+        // dd($id);
+        try {
+            // Item::find($id)->expenditures()->detach();
+            Item::destroy($id);
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

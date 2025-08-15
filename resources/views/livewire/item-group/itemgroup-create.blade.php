@@ -4,7 +4,7 @@
 
     <form wire:submit.prevent='save' class="space-y-4">
         <div>
-            <label for="name" class="block text-sm font-bold text-gray-700 dark:text-gray-300">Item Name</label>
+            <label for="name" class="block text-sm font-bold text-gray-700 dark:text-gray-300">Item Group Name</label>
             <input type="text" id="name" wire:model.defer="name"
                 class="block w-full px-4 py-2 mt-1 transition-colors duration-200 ease-in-out border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400">
             {{-- <!-- @error('name')

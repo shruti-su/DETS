@@ -13,7 +13,7 @@ class Item extends Model
 
     public function expenditures()
     {
-        return $this->belongsToMany(Expenditure::class, 'expenditure_item');
+        return $this->hasMany(Expenditure::class, 'item_id');
     }
 
     public function itemGroup()

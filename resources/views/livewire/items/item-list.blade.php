@@ -37,8 +37,12 @@
                             <!-- Three-dot dropdown menu -->
                             <div class="relative inline-block text-left">
                                 <button onclick="toggleDropdown(this)"
-                                    class="inline-flex justify-center w-full p-2 text-sm font-medium text-gray-700 bg-black rounded-md shadow-sm dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <i class="fas fa-ellipsis-v"></i>
+                                    class="inline-flex justify-center w-full p-2 text-sm font-medium text-gray-700 rounded-md shadow-sm dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <svg class="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.5 13a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0z"
+                                            fill="currentColor" />
+                                    </svg>
                                 </button>
                                 <div class="absolute right-0 z-10 hidden w-40 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
                                     role="menu">
@@ -47,7 +51,7 @@
                                             class="block w-full px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <i class="mr-2 fas fa-edit"></i>Edit
                                         </button>
-                                        <button
+                                        <button wire:click="deleteItem('{{ $item->id }}')"
                                             class="block w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <i class="mr-2 fas fa-trash-alt"></i>Delete
                                         </button>
