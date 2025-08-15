@@ -9,7 +9,7 @@ Route::view('/', 'welcome');
 
 Route::view('userdashboard', 'dashboard.userdashboard')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('userdashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -22,7 +22,7 @@ Route::get('itemgroups/{id}/add-item', [App\Http\Controllers\ItemGroupController
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin'])->group(function () {
-        Route::view('admindashboard', 'dashboard.admindashboard')->name('dashboard');
+        Route::view('admindashboard', 'dashboard.admindashboard')->name('admindashboard');
         Route::resource('items', App\Http\Controllers\ItemController::class);
         Route::resource('itemgroups', App\Http\Controllers\ItemGroupController::class);
     });

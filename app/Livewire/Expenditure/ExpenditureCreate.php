@@ -16,14 +16,14 @@ class ExpenditureCreate extends Component
     {
         return view('livewire.expenditure.expenditure-create', [
             'items' => Item::where('items.Name', 'like', '%'.$this->search.'%')
-                ->leftJoin('expenditures', 'expenditures.item_id', '=', 'items.id')
-                // ->where('expenditures.user_id', auth()->user()->id)
+                ->leftJoin('expenditures', function ($join) {
+                    $join->on('expenditures.item_id', '=', 'items.id')
+                        ->where('expenditures.user_id', auth()->id()); // Only show current user's expenditures
+                })
                 ->select('items.*', 'expenditures.amount as expenditure_amount')
                 ->get(),
         ]);
     }
-
-    // for submit the amount
 
     public function submitAmount($itemId)
     {
@@ -31,13 +31,26 @@ class ExpenditureCreate extends Component
             "amounts.$itemId" => 'required|numeric|min:0',
         ]);
 
-        Expenditure::create([
-            'item_id' => $itemId,
-            'user_id' => auth()->id(),
-            'amount' => $this->amounts[$itemId],
-        ]);
+        // Check if an expenditure already exists for this user & item
+        $existing = Expenditure::where('item_id', $itemId)
+            ->where('user_id', auth()->id())
+            ->first();
 
-        session()->flash('message', 'Expenditure submitted successfully!');
+        if ($existing) {
+            // Update the existing record
+            $existing->update([
+                'amount' => $this->amounts[$itemId],
+            ]);
+        } else {
+            // Create a new record
+            Expenditure::create([
+                'item_id' => $itemId,
+                'user_id' => auth()->id(),
+                'amount' => $this->amounts[$itemId],
+            ]);
+        }
+
+        session()->flash('message', 'Expenditure saved successfully!');
         $this->amounts[$itemId] = null; // Clear input after submit
     }
 }

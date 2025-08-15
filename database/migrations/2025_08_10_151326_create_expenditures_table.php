@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('expenditures', function (Blueprint $table) {
-            $table->ulid()->primary();
+            $table->ulid('id');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignUlid('item_id')->constrained();
             $table->decimal('amount');

@@ -99,16 +99,33 @@
                 <a href="#contact" class="hover:text-gray-900 dark:hover:text-white">Contact</a>
             </nav>
             <div class="items-center hidden space-x-3 md:flex">
-                <a href="{{ route('login') }}">
-                    <button
-                        class="px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Sign
-                        in</button>
-                </a>
-                <a href="{{ route('register') }}">
-                    <button
-                        class="px-4 py-2 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-500">Sign
-                        up</button>
-                </a>
+                @if (!Auth::check())
+                    <a href="{{ route('login') }}">
+                        <button
+                            class="px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Sign
+                            in
+                        </button>
+                    </a>
+                    <a href="{{ route('register') }}">
+                        <button
+                            class="px-4 py-2 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-500">Sign
+                            up</button>
+                    </a>
+                @elseif(Auth::check() && Auth::user()->role == 'admin')
+                    <a href="{{ route('admindashboard') }}">
+                        <button
+                            class="inline-flex items-center px-1 pt-1 text-sm font-bold leading-5 text-gray-900 transition duration-150 ease-in-out border-b-2 border-indigo-400 dark:border-indigo-600 dark:text-gray-100 focus:outline-none focus:border-indigo-700">
+                            Admin Dashboard
+                        </button>
+                    </a>
+                @elseif(Auth::check() && Auth::user()->role == 'user')
+                    <a href="{{ route('userdashboard') }}">
+                        <button
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 transition duration-150 ease-in-out border-b-2 border-indigo-400 dark:border-indigo-600 dark:text-gray-100 focus:outline-none focus:border-indigo-700">
+                            User Dashboard
+                        </button>
+                    </a>
+                @endif
             </div>
             <button id="mobile-menu-btn" class="text-gray-700 md:hidden dark:text-gray-200 focus:outline-none">
                 <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
@@ -129,12 +146,32 @@
                 <a href="#faq" class="hover:text-gray-900 dark:hover:text-white">FAQ</a>
                 <a href="#contact" class="hover:text-gray-900 dark:hover:text-white">Contact</a>
                 <hr class="border-gray-200 dark:border-gray-700">
-                <button
-                    class="w-full px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Sign
-                    in</button>
-                <button
-                    class="w-full px-4 py-2 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-500">Sign
-                    up</button>
+                @if (!Auth::check())
+                    <a href="{{ route('login') }}">
+                        <button
+                            class="w-full px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">Sign
+                            in</button>
+                    </a>
+                    <a href="{{ route('register') }}">
+                        <button
+                            class="w-full px-4 py-2 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-500">Sign
+                            up</button>
+                    </a>
+                @elseif(Auth::check() && Auth::user()->role == 'admin')
+                    <a href="{{ route('admindashboard') }}">
+                        <button
+                            class="w-full px-4 py-2 text-sm font-bold text-gray-900 border-b-2 border-indigo-400 dark:border-indigo-600 dark:text-gray-100">
+                            Admin Dashboard
+                        </button>
+                    </a>
+                @elseif(Auth::check() && Auth::user()->role == 'user')
+                    <a href="{{ route('userdashboard') }}">
+                        <button
+                            class="w-full px-4 py-2 text-sm font-medium text-gray-900 transition duration-150 ease-in-out border-b-2 border-indigo-400 dark:border-indigo-600 dark:text-gray-100 focus:outline-none focus:border-indigo-700">
+                            User Dashboard
+                        </button>
+                    </a>
+                @endif
             </nav>
         </div>
     </header>

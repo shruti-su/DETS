@@ -13,8 +13,6 @@
                     <th class="px-4 py-3 text-sm font-semibold text-left">Name</th>
                     <th class="px-4 py-3 text-sm font-semibold text-left">Description</th>
                     <th class="px-4 py-3 text-sm font-semibold text-left">Existing Amount</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left"> Enter Amount</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left">Actions</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -27,7 +25,7 @@
                         <td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
                             {{ $item->Description ?? '—' }}
                         </td>
-                        <td class="flex px-4 py-3 text-sm text-gray-500  dark:text-gray-300">
+                        <td class="flex px-4 py-3 text-sm text-gray-500 dark:text-gray-300">
                             <svg class="w-4 h-4" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8 5v2h4c1.704 0 3.94 1.038 4.72 3H8v2h8.97c-.31 2.61-2.996 4-4.97 4H8v2.47L18.25 27h3.125l-10.813-9H12c3.234 0 6.674-2.39 6.97-6H24v-2h-5.188C18.51 8.816 17.86 7.804 17 7h7V5H8z"
@@ -35,22 +33,6 @@
                             </svg>
                             {{ $item->expenditure_amount ?? '00.00' }}
                         </td>
-
-                        <td class="px-4 py-3 text-sm text-gray-500">
-
-                            <div class="relative inline-block text-left">
-                                <x-text-input type='number' placeholder='Enter the amount'
-                                    wire:model.defer="amounts.{{ $item->id }}" />
-                            </div>
-                        </td>
-                        <td class="relative px-4 py-3 text-sm text-gray-500">
-                            <button wire:click="submitAmount('{{ $item->id }}')"
-                                class="items-center block w-full px-4 py-2 text-lg font-bold text-white bg-green-500 rounded-lg dark:text-gray-300 dark:bg-green-700 hover:bg-green-600"
-                                role="menuitem" tabindex="-1">
-                                <i class="mr-2 fas fa-edit"></i>Submit
-                            </button>
-                        </td>
-
                     </tr>
                 @empty
                     <tr>
