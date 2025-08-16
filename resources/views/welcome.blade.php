@@ -450,10 +450,10 @@
 
         <div class="relative overflow-hidden">
             <!-- Testimonials Carousel Container -->
-            <div id="carousel" class="flex transition-transform duration-500 ease-in-out carousel-container">
+            <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
 
                 <!-- Testimonial Card 1 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <!-- Quote Icon -->
@@ -514,7 +514,7 @@
                 </div>
 
                 <!-- Testimonial Card 2 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <svg class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -572,7 +572,7 @@
                 </div>
 
                 <!-- Testimonial Card 3 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <svg class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -630,7 +630,7 @@
                 </div>
 
                 <!-- New Testimonial Card 4 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <svg class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -687,7 +687,7 @@
                 </div>
 
                 <!-- New Testimonial Card 5 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <svg class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -744,7 +744,7 @@
                 </div>
 
                 <!-- New Testimonial Card 6 -->
-                <div class="flex-shrink-0 w-full px-4 md:w-1/2 lg:w-1/3">
+                <div class="flex-shrink-0 w-full px-4 slide md:w-1/2 lg:w-1/3">
                     <div class="h-full p-8 bg-white shadow-lg dark:bg-gray-800 rounded-3xl">
                         <div class="flex items-center justify-between mb-6">
                             <svg class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -828,25 +828,24 @@
     <script>
         const carousel = document.getElementById('carousel');
         const dotsContainer = document.getElementById('dots');
-        const slides = Array.from(carousel.children);
+        const slides = Array.from(carousel.querySelectorAll('.slide'));
+
         let index = 0;
 
-        // ✅ Filter only real testimonial slides
-        const testimonialSlides = slides.filter(slide => {
-            // A testimonial has some visible text or an image
-            return slide.textContent.trim() !== "" || slide.querySelector('img, blockquote, p, h3, h4');
-        });
+        // Group size (number of testimonials per view)
+        const groupSize = 3; // 👈 change this to 2, 3, etc. as needed
+        const totalGroups = Math.ceil(slides.length / groupSize);
 
-        // Clear any old dots
+        // Clear old dots
         dotsContainer.innerHTML = "";
 
-        // ✅ Create one dot per testimonial
-        testimonialSlides.forEach((_, i) => {
+        // Create one dot per group
+        for (let i = 0; i < totalGroups; i++) {
             const dot = document.createElement('button');
             dot.className = 'w-3 h-3 rounded-full bg-gray-400 transition-all duration-300';
-            dot.addEventListener('click', () => showSlide(i));
+            dot.addEventListener('click', () => showGroup(i));
             dotsContainer.appendChild(dot);
-        });
+        }
 
         function updateDots() {
             [...dotsContainer.children].forEach((dot, i) => {
@@ -855,24 +854,25 @@
             });
         }
 
-        function showSlide(i) {
-            index = (i + testimonialSlides.length) % testimonialSlides.length;
+        function showGroup(i) {
+            index = (i + totalGroups) % totalGroups;
             carousel.style.transform = `translateX(-${index * 100}%)`;
             updateDots();
         }
 
         function autoSlide() {
-            showSlide(index + 1);
+            showGroup(index + 1);
         }
 
         // Arrow controls
-        document.getElementById('prev-btn').addEventListener('click', () => showSlide(index - 1));
-        document.getElementById('next-btn').addEventListener('click', () => showSlide(index + 1));
+        document.getElementById('prev-btn').addEventListener('click', () => showGroup(index - 1));
+        document.getElementById('next-btn').addEventListener('click', () => showGroup(index + 1));
 
         // Init
         updateDots();
         setInterval(autoSlide, 4000);
     </script>
+
     <!-- FAQ Section -->
     <style>
         /* Custom CSS to handle the accordion arrow rotation */

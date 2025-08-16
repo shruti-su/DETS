@@ -1,4 +1,4 @@
-<div class="p-6 md:p-10">
+<div class="min-h-screen p-6 bg-gray-300 md:p-10 dark:bg-slate-900 ">
     <!-- Enhanced header and search bar section -->
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200">Add Expence</h1>

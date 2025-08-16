@@ -1,4 +1,4 @@
- <div class="p-6 md:p-10">
+ <div class="min-h-screen p-6 bg-gray-300 md:p-10 dark:bg-slate-900">
      <!-- Enhanced header with search bar -->
      <div class="flex flex-col items-center justify-between mb-6 space-y-4 md:flex-row md:space-y-0">
          <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200">Item Groups</h1>

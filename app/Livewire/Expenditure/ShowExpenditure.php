@@ -2,12 +2,19 @@
 
 namespace App\Livewire\Expenditure;
 
+use App\Models\User;
 use Livewire\Component;
 
 class ShowExpenditure extends Component
 {
     public function render()
     {
-        return view('livewire.expenditure.show-expenditure');
+        // dd( User::where('role', 'user')
+        //         ->get(),);
+        return view('livewire.expenditure.show-expenditure', [
+
+            'User' => User::where('role', 'user')
+                ->get(),
+        ]);
     }
 }

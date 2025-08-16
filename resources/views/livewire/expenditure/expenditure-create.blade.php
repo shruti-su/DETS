@@ -1,4 +1,4 @@
-<div class="p-6 md:p-10">
+<div class="min-h-screen p-6 bg-gray-300 md:p-10 dark:bg-slate-900">
     <!-- Enhanced header and search bar section -->
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200">Add Expence</h1>
@@ -27,7 +27,7 @@
                         <td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
                             {{ $item->Description ?? '—' }}
                         </td>
-                        <td class="flex px-4 py-3 text-sm text-gray-500  dark:text-gray-300">
+                        <td class="flex px-4 py-3 text-sm text-gray-500 dark:text-gray-300">
                             <svg class="w-4 h-4" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8 5v2h4c1.704 0 3.94 1.038 4.72 3H8v2h8.97c-.31 2.61-2.996 4-4.97 4H8v2.47L18.25 27h3.125l-10.813-9H12c3.234 0 6.674-2.39 6.97-6H24v-2h-5.188C18.51 8.816 17.86 7.804 17 7h7V5H8z"
