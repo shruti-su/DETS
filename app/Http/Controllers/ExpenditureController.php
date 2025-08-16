@@ -66,4 +66,11 @@ class ExpenditureController extends Controller
             'user' => $id,
         ]);
     }
+
+    public function edit_expenditure(string $id)
+    {
+        return view('expenditure.edit_expenditure', [
+            'expenditure' => $id,
+        ]);
+    }
 }

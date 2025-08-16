@@ -28,7 +28,8 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('show-expenditure/{id}/change_expenditure', [App\Http\Controllers\ExpenditureController::class, 'change_expenditure'])
         ->name('expenditures.change_expenditure');
-
+    Route::get('change-expenditure/{expenditure_id}/edit_expenditure', [App\Http\Controllers\ExpenditureController::class, 'edit_expenditure'])
+        ->name('expenditures.edit_expenditure');
 });
 
 require __DIR__.'/auth.php';

@@ -49,14 +49,17 @@
                                 <div class="absolute right-0 z-10 hidden w-40 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
                                     role="menu">
                                     <div class="py-1">
-                                        <button
-                                            class="block w-full px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                            <i class="mr-2 fas fa-edit"></i>Edit
-                                        </button>
+                                        <a href="{{ route('expenditures.edit_expenditure', $item->expenditure_id) }}">
+                                            <button
+                                                class="block w-full px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="mr-2 fas fa-edit"></i>Edit
+                                            </button>
+                                        </a>
                                         <button wire:click="deleteAmount('{{ $item->id }}')"
                                             class="block w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <i class="mr-2 fas fa-trash-alt"></i>Delete
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
