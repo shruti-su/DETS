@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class ExpenditureController extends Controller
+class ChangeExpenditureController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() {}
+    public function index()
+    {
+        return view('expenditure.change_expenditure');
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('expenditure.create');
+        //
     }
 
     /**
@@ -58,12 +60,5 @@ class ExpenditureController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function change_expenditure(User $id)
-    {
-        return view('expenditure.change_expenditure', [
-            'user' => $id,
-        ]);
     }
 }

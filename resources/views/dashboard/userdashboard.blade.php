@@ -6,6 +6,4 @@
     </x-slot>
     @livewire('expenditure.expenditure-index')
 
-
-
 </x-app-layout>

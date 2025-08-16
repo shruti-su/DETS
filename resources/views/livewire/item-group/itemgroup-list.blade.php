@@ -21,7 +21,7 @@
                  {{-- The dynamic data loop, adjusted for your variable names --}}
                  @forelse($itemGroups as $itemgroup)
                      <tr
-                         class="transition-colors duration-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                         class="transition-colors duration-200 odd:bg-white even:bg-gray-200 dark:odd:bg-gray-800 dark:even:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                          <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
                              {{ $itemgroup->Name }}
                          </td>
@@ -58,11 +58,11 @@
                                                  <i class="mr-2 fas fa-plus-circle"></i>Add Item
                                              </button>
                                          </a>
-                                         <button
+                                         {{-- <button
                                              class="block w-full px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                                              role="menuitem" tabindex="-1">
                                              <i class="mr-2 fas fa-edit"></i>Edit
-                                         </button>
+                                         </button> --}}
                                          <button wire:click="deleteItemgroup('{{ $itemgroup->id }}')"
                                              class="block w-full px-4 py-2 text-sm text-left text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
                                              role="menuitem" tabindex="-1">

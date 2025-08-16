@@ -18,7 +18,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse($User as $user)
                     <tr
-                        class="transition-colors duration-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        class="transition-colors duration-200 odd:bg-white even:bg-gray-200 dark:odd:bg-gray-800 dark:even:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
                             {{ $user->name }}
                         </td>
@@ -26,7 +26,7 @@
                             {{ $user->email }}
                         </td>
                         <td class="relative px-4 py-3 text-sm text-gray-500">
-                            <a href="{{ route('userdashboard') }}">
+                            <a href="{{ route('expenditures.change_expenditure', $user->id) }}">
                                 <button
                                     class="px-4 py-2 font-semibold text-white rounded-md bg-emerald-500 hover:bg-emerald-600 dark:bg-emerald-700"
                                     role="menuitem" tabindex="-1">

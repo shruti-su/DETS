@@ -18,14 +18,14 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse($items as $item)
                     <tr
-                        class="transition-colors duration-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
+                        class="transition-colors duration-200 odd:bg-white even:bg-gray-200 dark:odd:bg-gray-800 dark:even:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <td class="px-4 py-3 text-base font-medium text-gray-900 dark:text-gray-100">
                             {{ $item->Name }}
                         </td>
-                        <td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+                        <td class="px-4 py-3 text-base text-gray-700 dark:text-gray-300">
                             {{ $item->Description ?? '—' }}
                         </td>
-                        <td class="flex px-4 py-3 text-sm text-gray-500 dark:text-gray-300">
+                        <td class="flex gap-1 px-4 py-3 text-base text-gray-500 dark:text-gray-300">
                             <svg class="w-4 h-4" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8 5v2h4c1.704 0 3.94 1.038 4.72 3H8v2h8.97c-.31 2.61-2.996 4-4.97 4H8v2.47L18.25 27h3.125l-10.813-9H12c3.234 0 6.674-2.39 6.97-6H24v-2h-5.188C18.51 8.816 17.86 7.804 17 7h7V5H8z"

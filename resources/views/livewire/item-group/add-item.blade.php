@@ -18,7 +18,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse($items as $item)
                     <tr
-                        class="transition-colors duration-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        class="transition-colors duration-200 odd:bg-white even:bg-gray-200 dark:odd:bg-gray-800 dark:even:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
                             {{ $item->Name }}
                         </td>

@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('items', App\Http\Controllers\ItemController::class);
         Route::resource('itemgroups', App\Http\Controllers\ItemGroupController::class);
     });
+    Route::get('show-expenditure/{id}/change_expenditure', [App\Http\Controllers\ExpenditureController::class, 'change_expenditure'])
+        ->name('expenditures.change_expenditure');
 
 });
 
